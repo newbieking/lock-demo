@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: dev
+
+
+  # MySQL ?????
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lock_test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  # Redis ??
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+
+mybatis-plus:
+  # ?????? Mapper XML ????
+  mapper-locations: classpath:generator/mapper/*.xml
+  # ??????
+  type-aliases-package: com.newbieking.generator.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

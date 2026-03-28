@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newbieking.generator.mapper.SellerInvoiceLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.newbieking.generator.domain.SellerInvoiceLog">
+            <id property="id" column="id" />
+            <result property="invoiceId" column="invoice_id" />
+            <result property="action" column="action" />
+            <result property="content" column="content" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,invoice_id,action,content,create_time
+    </sql>
+</mapper>

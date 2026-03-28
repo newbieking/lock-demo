@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newbieking.generator.mapper.SellerAccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.newbieking.generator.domain.SellerAccount">
+            <id property="id" column="id" />
+            <result property="sellerId" column="seller_id" />
+            <result property="balance" column="balance" />
+            <result property="version" column="version" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,seller_id,balance,version,create_time,update_time
+    </sql>
+    <!-- 原子扣减余额：必须满足 余额 >= 扣减金额 才会执行 -->
+    <update id="deductBalance">
+        UPDATE seller_account
+        SET balance = balance - #{amount}, version = version + 1
+        WHERE seller_id = #{sellerId} AND balance >= #{amount}
+        AND version = #{version}
+    </update>
+</mapper>
